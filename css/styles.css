@@ -194,3 +194,20 @@ button:hover {
   opacity: 1 !important;
   visibility: visible !important;
 }
+/* Fix chord viewer background colour */
+#chordViewer svg rect,
+#perfChordViewer svg rect {
+  fill: #222 !important;   /* or whatever background colour your site uses */
+}
+
+/* Fix nut colour (top bar) */
+#chordViewer svg .nut,
+#perfChordViewer svg .nut {
+  fill: #444 !important;   /* slightly lighter so the nut is visible */
+}
+
+/* Fix fret lines */
+#chordViewer svg line,
+#perfChordViewer svg line {
+  stroke: #ccc !important;
+}
