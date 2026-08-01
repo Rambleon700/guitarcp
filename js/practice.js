@@ -137,12 +137,20 @@ function startCustomExercise(ex) {
   PracticeSession.isPlaying = true;
 
   applyDifficulty(ex);
+function startCustomExercise(ex) {
+  PracticeSession.currentExercise = ex;
+  PracticeSession.mode = ex.tempoMode;
+  PracticeSession.loopCount = 0;
+  PracticeSession.isPlaying = true;
+
+  applyDifficulty(ex);
 
   const steps = parseStrummingPattern(ex.pattern);
   let chordIndex = 0;
-  loadChord(ex.chords[chordIndex]);   // show first chord immediately
   let stepIndex = 0;
-  loadChord(ex.chords[chordIndex]);   // show first chord immediately
+
+  loadChord(ex.chords[chordIndex]);   // ⭐ THIS LINE GOES HERE
+
 renderStrumArrows("down", "strum-arrows");
 renderRhythmGrid(ex.pattern, "rhythmGrid");
 
