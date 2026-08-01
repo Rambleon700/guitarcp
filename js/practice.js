@@ -140,6 +140,7 @@ function startCustomExercise(ex) {
 
   const steps = parseStrummingPattern(ex.pattern);
   let chordIndex = 0;
+  loadChord(ex.chords[chordIndex]);   // show first chord immediately
   let stepIndex = 0;
 
   if (!ex.chords.length) return;
