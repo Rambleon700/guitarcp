@@ -142,6 +142,9 @@ function startCustomExercise(ex) {
   let chordIndex = 0;
   loadChord(ex.chords[chordIndex]);   // show first chord immediately
   let stepIndex = 0;
+  loadChord(ex.chords[chordIndex]);   // show first chord immediately
+renderStrumArrows("down", "strum-arrows");
+renderRhythmGrid(ex.pattern, "rhythmGrid");
 
   if (!ex.chords.length) return;
 
