@@ -280,3 +280,15 @@ button:hover {
   margin-top: 10px;
   color: #333;
 }
+
+#practiceControls {
+  margin-top: 10px;
+  text-align: center;
+}
+
+#practiceControls button {
+  padding: 8px 16px;
+  margin: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+}
