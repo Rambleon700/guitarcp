@@ -212,7 +212,7 @@ function stopPracticeSession() {
 // ------------------------------------------------------------
 
 function loadSongIntoPractice(title) {
-  const song = getSongByTitle(title);
+  document.getElementById("currentSongTitle").textContent = title;
   if (!song) return;
 
   // Populate practice form
