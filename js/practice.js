@@ -195,6 +195,23 @@ function startCustomExercise(ex) {
   scheduleNextStep(loopStep);
 }
 
+function loadSongIntoPractice(title) {
+  const song = getSongByTitle(title);
+  if (!song) return;
+
+  // Populate the practice form fields
+  document.getElementById("customChords").value = song.chords.join(", ");
+  document.getElementById("customPattern").value = song.strumming;
+  document.getElementById("customBPM").value = song.bpm;
+  document.getElementById("customTempoMode").value = "static";
+  document.getElementById("customDuration").value = 60;
+  document.getElementById("customDifficulty").value = 2;
+
+  // Build and start the exercise
+  const ex = buildCustomExercise();
+  startCustomExercise(ex);
+}
+
 // ------------------------------------------------------------
 // STOP PRACTICE SESSION
 // ------------------------------------------------------------
