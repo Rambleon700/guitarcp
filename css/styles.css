@@ -185,3 +185,12 @@ button:hover {
 .song-actions button {
   margin-left: 4px;
 }
+
+#chordViewer svg,
+#perfChordViewer svg {
+  display: block !important;
+  width: 200px !important;
+  height: auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
