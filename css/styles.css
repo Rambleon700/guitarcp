@@ -211,3 +211,51 @@ button:hover {
 #perfChordViewer svg line {
   stroke: #ccc !important;
 }
+
+/* ----------------------------------------------------------
+   FENDER MAPLE CHORD VIEWER THEME
+   ---------------------------------------------------------- */
+
+/* Main fretboard background (pale Fender maple) */
+#chordViewer svg rect,
+#perfChordViewer svg rect {
+  fill: #f7e7c6 !important;        /* pale blonde maple */
+}
+
+/* Nut (slightly darker satin maple) */
+#chordViewer svg .nut,
+#perfChordViewer svg .nut {
+  fill: #e2cba4 !important;        /* Fender-style nut tone */
+}
+
+/* Fret lines (thin, subtle, modern Fender look) */
+#chordViewer svg line,
+#perfChordViewer svg line {
+  stroke: #c7b08a !important;      /* soft brown fret separators */
+  stroke-width: 2 !important;
+}
+
+/* Strings (dark nickel/steel) */
+#chordViewer svg .string,
+#perfChordViewer svg .string {
+  stroke: #3a3a3a !important;      /* darker steel for contrast */
+  stroke-width: 2 !important;
+}
+
+/* Finger dots (dark walnut markers, classic Fender) */
+#chordViewer svg circle,
+#perfChordViewer svg circle {
+  fill: #4b2e14 !important;        /* walnut-style markers */
+  stroke: #f7e7c6 !important;      /* subtle outline for visibility */
+  stroke-width: 1.5 !important;
+}
+
+/* Fender-style maple grain (tight, vertical, subtle) */
+#chordViewer svg,
+#perfChordViewer svg {
+  background-image: linear-gradient(
+    rgba(255,255,255,0.12) 0px,
+    rgba(0,0,0,0.04) 3px
+  );
+  background-size: 100% 5px;       /* tight grain like Fender necks */
+}
