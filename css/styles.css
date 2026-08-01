@@ -266,4 +266,10 @@ button:hover {
   fill: #ffffff !important;
   font-weight: 700 !important;
 }
+/* Make X / O markers bright white */
+#chordViewer svg text,
+#perfChordViewer svg text {
+  fill: #ffffff !important;
+  font-weight: 700 !important;
+}
 
