@@ -259,3 +259,11 @@ button:hover {
   );
   background-size: 100% 5px;       /* tight grain like Fender necks */
 }
+
+/* Open string markers (O) — make them bright white */
+#chordViewer svg text.open-string,
+#perfChordViewer svg text.open-string {
+  fill: #ffffff !important;
+  font-weight: 700 !important;
+}
+
