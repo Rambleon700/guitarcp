@@ -145,12 +145,11 @@ function startCustomExercise(ex) {
 
   applyDifficulty(ex);
 
-  const steps = parseStrummingPattern(ex.pattern);
-  let chordIndex = 0;
-  let stepIndex = 0;
+ const steps = parseStrummingPattern(ex.pattern);
+let chordIndex = 0;
+let stepIndex = 0;
 
-  loadChord(ex.chords[chordIndex]);   // ⭐ THIS LINE GOES HERE
-
+loadChord(ex.chords[chordIndex]);   // ⭐ FIX: chord jumps instantly
 renderStrumArrows("down", "strum-arrows");
 renderRhythmGrid(ex.pattern, "rhythmGrid");
 
