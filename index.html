@@ -35,23 +35,27 @@
     <section>
       <h2>Chord Viewer & Practice</h2>
       <div id="chordViewerContainer" style="text-align:center;">
-        <div id="chordViewer"></div>
-        <div id="currentSongTitle" class="song-title"></div>
-        <div id="viewerButtons">
-          <button id="playChordBtn">Play Chord</button>
-          <button id="nextVoicingBtn">Next Voicing</button>
-        </div>
-        <div id="practiceControls">
-          <button id="practiceStart">Start Practice</button>
-          <button id="practiceStop">Stop</button>
-        </div>
-        <div id="bpmPanel">
-          BPM: <span id="bpmDisplay">80</span>
-          <input type="range" id="bpmSlider" min="40" max="180" value="80">
-        </div>
-        <div id="rhythmGrid"></div>
-        <div id="strum-arrows"></div>
-      </div>
+<div id="chordViewer"></div>
+
+<div id="currentSongTitle" class="song-title"></div>
+
+<div id="viewerButtons" style="margin: 20px 0;">
+  <button id="playChordBtn">Play Chord</button>
+  <button id="nextVoicingBtn">Next Voicing</button>
+</div>
+
+<div id="practiceControls" style="margin: 16px 0;">
+  <button id="practiceStartBtn">Start Practice</button>
+  <button id="practiceStopBtn">Stop</button>
+</div>
+
+<div id="bpmPanel">
+  <label>BPM: <span id="bpmDisplay">80</span></label>
+  <input type="range" id="bpmSlider" min="40" max="160" value="80">
+</div>
+
+<div id="rhythmGrid"></div>
+<div id="strum-arrows"></div> 
 
       <!-- Custom Exercise -->
       <div class="exercise-builder">
