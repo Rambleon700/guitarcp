@@ -307,33 +307,6 @@
 <!-- ============================
      SCRIPTS
      ============================ -->
-<script src="js/engine.js"></script>
-<script src="js/chords.js"></script>
-<script src="js/songs.js"></script>
-<script src="js/practice.js"></script>
-
-<script>
-  // Hook viewer buttons to your existing engine/chords functions
-  document.getElementById("playChordBtn").onclick = () => {
-    // assumes current chord is already loaded by loadChord()
-    // playChordAudio is defined in practice.js
-    if (PracticeSession.currentExercise && PracticeSession.currentExercise.chords.length) {
-      playChordAudio(PracticeSession.currentExercise.chords[0]);
-    }
-  };
-
-  document.getElementById("nextVoicingBtn").onclick = () => {
-    // if you have a next voicing function, call it here
-    if (typeof nextVoicing === "function") {
-      nextVoicing();
-    }
-  };
-
-  // Initialise song browser (songs.js should define initSongBrowser)
-  if (typeof initSongBrowser === "function") {
-    initSongBrowser();
-  }
-</script>
 <script>
   initSongBrowser();
 </script>
