@@ -62,17 +62,25 @@
       if (typeof initSongBrowser === 'function') initSongBrowser();
       if (typeof loadChord === 'function') loadChord("C");
 
-      // Button connections
+      // Play Chord Button
       document.getElementById("playChordBtn").onclick = () => {
-        if (typeof playChordAudio === "function") playChordAudio("Em");
+        if (typeof playChordAudio === "function") {
+          playChordAudio("Em");   // Change to current chord later
+        }
       };
 
+      // Start Practice Button
       document.getElementById("practiceStartBtn").onclick = () => {
-        if (typeof startCustomExercise === "function") startCustomExercise();
+        if (typeof startCustomExercise === "function") {
+          startCustomExercise();
+        }
       };
 
+      // Stop Button
       document.getElementById("practiceStopBtn").onclick = () => {
-        if (typeof stopPracticeSession === "function") stopPracticeSession();
+        if (typeof stopPracticeSession === "function") {
+          stopPracticeSession();
+        }
       };
     });
   </script>
