@@ -202,31 +202,47 @@ function startCustomExercise(ex) {
 function stopPracticeSession() {
   PracticeSession.isPlaying = false;
 }
-
 // ------------------------------------------------------------
 // LOAD SONG INTO PRACTICE MODE
 // ------------------------------------------------------------
 
 function loadSongIntoPractice(title) {
-  const song = getSongByTitle(title);
+  const song = SONG_LIBRARY.find(s => s.title === title);
   if (!song) return;
 
-  // Populate practice form
-  document.getElementById("customChords").value = song.chords.join(", ");
-  document.getElementById("customPattern").value = song.strumming;
-  document.getElementById("customBPM").value = song.bpm;
-  document.getElementById("customTempoMode").value = "static";
-  document.getElementById("customDuration").value = 60;
-  document.getElementById("customDifficulty").value = 2;
-
   // Update song title under chord viewer
-  const titleBox = document.getElementById("currentSongTitle");
-  if (titleBox) titleBox.textContent = title;
+  document.getElementById("currentSongTitle").textContent = song.title;
 
-  // Build + start exercise
-  const ex = buildCustomExercise();
-  startCustomExercise(ex);
+  // Load first chord immediately
+  if (song.chords.length > 0) {
+    loadChord(song.chords[0]);
+  }
+
+  // Update BPM slider + display
+  document.getElementById("bpmSlider").value = song.bpm;
+  document.getElementById("bpmDisplay").textContent = song.bpm;
+
+  // Store exercise for practice mode
+  PracticeSession.currentExercise = {
+    chords: song.chords,
+    pattern: song.strumming,
+    bpm: song.bpm
+  };
+
+  console.log("Loaded song into practice:", song.title);
 }
+
+// ------------------------------------------------------------
+// PERFORMANCE MODE (simple version)
+// ------------------------------------------------------------
+
+function enterPerformanceMode(title) {
+  const song = SONG_LIBRARY.find(s => s.title === title);
+  if (!song) return;
+
+  alert(`Performance Mode\n\n${song.title}\n${song.artist}\n\nChords: ${song.chords.join(", ")}\nStrumming: ${song.strumming}\nBPM: ${song.bpm}`);
+}
+
 
 // ------------------------------------------------------------
 // START / STOP BUTTONS
