@@ -5,70 +5,78 @@
   <title>GuitarCP – Practice Tool</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/styles.css">
-  <style>
-    body { background: #0d0d0d; color: #eee; font-family: system-ui, sans-serif; margin:0; padding:20px; }
-    main { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; }
-    button { padding: 12px 20px; margin: 6px; background: #333; color: white; border: none; border-radius: 8px; font-size: 1rem; }
-    button:hover { background: #ffcc33; color: #111; }
-    #chordViewer { width: 220px; height: 240px; margin: 20px auto; background: #f5e8c7; border-radius: 10px; }
-  </style>
 </head>
 <body>
-  <h1>GuitarCP – Practice Tool</h1>
+  <header>
+    <h1>GuitarCP – Practice Tool</h1>
+  </header>
+
   <main>
     <section>
       <h2>Song Browser</h2>
-      <table id="songBrowserTable"><tbody id="songBrowserBody"></tbody></table>
+      <input type="text" id="songSearch" class="song-search" placeholder="Search songs or artists...">
+      <table id="songBrowserTable">
+        <thead>
+          <tr>
+            <th>Title</th><th>Artist</th><th>Chords</th><th>Strum</th><th>BPM</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="songBrowserBody"></tbody>
+      </table>
     </section>
 
     <section>
       <h2>Chord Viewer & Practice</h2>
-      <div id="chordViewer"></div>
-      <div id="currentSongTitle" style="text-align:center; font-size:1.5rem; margin:15px 0;"></div>
-      
-      <button id="playBtn">Play Chord</button>
-      <button id="startBtn">Start Practice</button>
-      <button id="stopBtn">Stop</button>
+      <div id="chordViewerContainer" style="text-align:center;">
+        <div id="chordViewer"></div>
+        <div id="currentSongTitle" class="song-title"></div>
+
+        <div style="margin:20px 0;">
+          <button id="playChordBtn">Play Chord</button>
+          <button id="nextVoicingBtn">Next Voicing</button>
+        </div>
+
+        <div style="margin:16px 0;">
+          <button id="practiceStartBtn">Start Practice</button>
+          <button id="practiceStopBtn">Stop</button>
+        </div>
+
+        <div id="bpmPanel">
+          BPM: <span id="bpmDisplay">80</span>
+          <input type="range" id="bpmSlider" min="40" max="160" value="80" style="width:80%;">
+        </div>
+
+        <div id="rhythmGrid"></div>
+        <div id="strum-arrows"></div>
+      </div>
     </section>
   </main>
 
   <script src="js/chords.js"></script>
   <script src="js/engine.js"></script>
+  <script src="js/songs.js"></script>
+  <script src="js/practice.js"></script>
 
   <script>
-    // Simple working functions
-    function playChordAudio(name = "Em") {
-      console.log("🎵 Playing:", name);
-      alert("Playing chord: " + name);
-    }
+    window.addEventListener('load', function() {
+      if (typeof initSongBrowser === 'function') initSongBrowser();
+      if (typeof loadChord === 'function') loadChord("C");
 
-    function startPractice() {
-      document.getElementById("currentSongTitle").textContent = "Practice Mode Active";
-      console.log("▶️ Practice Started");
-      alert("Practice Started!");
-    }
+      // Button fixes
+      document.getElementById('playChordBtn').onclick = () => {
+        if (typeof playChordAudio === 'function') playChordAudio("Em");
+      };
 
-    function stopPractice() {
-      console.log("⏹️ Stopped");
-      alert("Practice Stopped");
-    }
+      document.getElementById('practiceStartBtn').onclick = () => {
+        if (typeof startCustomExercise === 'function') {
+          startCustomExercise({chords: ["Em","C","G","D"], pattern: "D DU UDU", bpm: 80});
+        }
+      };
 
-    // Button setup
-    window.onload = () => {
-      document.getElementById("playBtn").onclick = () => playChordAudio("Em");
-      document.getElementById("startBtn").onclick = startPractice;
-      document.getElementById("stopBtn").onclick = stopPractice;
-
-      // Simple song list
-      document.getElementById("songBrowserBody").innerHTML = `
-        <tr><td>Wonderwall</td><td>Oasis</td><td><button onclick="loadSong('Wonderwall')">Practice</button></td></tr>
-      `;
-    };
-
-    function loadSong(title) {
-      document.getElementById("currentSongTitle").textContent = title;
-      alert("Loaded: " + title);
-    }
+      document.getElementById('practiceStopBtn').onclick = () => {
+        if (typeof stopPracticeSession === 'function') stopPracticeSession();
+      };
+    });
   </script>
 </body>
 </html>
