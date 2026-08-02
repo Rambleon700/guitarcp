@@ -80,5 +80,53 @@
       renderStrumArrows();
     });
   </script>
+  <script>
+  // Initialize everything
+  window.addEventListener('load', () => {
+    initSongBrowser();
+    
+    // Default chord
+    if (typeof loadChord === 'function') loadChord("C");
+
+    // Button handlers
+    const playBtn = document.getElementById("playChordBtn");
+    const nextBtn = document.getElementById("nextVoicingBtn");
+    const startBtn = document.getElementById("practiceStartBtn");
+    const stopBtn = document.getElementById("practiceStopBtn");
+
+    if (playBtn) playBtn.addEventListener("click", () => {
+      if (typeof playChordAudio === "function" && PracticeSession.currentExercise) {
+        playChordAudio(PracticeSession.currentExercise.chords[0] || "C");
+      }
+    });
+
+    if (nextBtn) nextBtn.addEventListener("click", () => {
+      console.log("Next voicing clicked");
+      // Add logic later if you want multiple voicings
+    });
+
+    if (startBtn) startBtn.addEventListener("click", () => {
+      if (typeof startCustomExercise === "function") {
+        const ex = buildCustomExercise ? buildCustomExercise() : {chords: ["Em"], pattern: "D DU UDU", bpm: 80, duration: 60};
+        startCustomExercise(ex);
+      }
+    });
+
+    if (stopBtn) stopBtn.addEventListener("click", () => {
+      if (typeof stopPracticeSession === "function") stopPracticeSession();
+    });
+
+    // BPM Slider
+    const slider = document.getElementById("bpmSlider");
+    if (slider) {
+      slider.addEventListener("input", (e) => {
+        if (typeof PracticeSession !== "undefined") {
+          PracticeSession.bpm = parseInt(e.target.value);
+        }
+        document.getElementById("bpmDisplay").textContent = e.target.value;
+      });
+    }
+  });
+</script>
 </body>
 </html>
