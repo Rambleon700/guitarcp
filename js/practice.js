@@ -1,9 +1,5 @@
-// practice.js - Cleaned
-
-const PracticeSession = {
-  isPlaying: false,
-  currentExercise: null
-};
+// Clean practice.js
+const PracticeSession = { isPlaying: false, currentExercise: null };
 
 function playChordAudio(chordName = "Em") {
   if (typeof playChord === "function") {
@@ -11,21 +7,21 @@ function playChordAudio(chordName = "Em") {
     const chordData = CHORDS[chordName].voicings[0];
     playChord(chordData);
   }
+  console.log("Play Chord:", chordName);
 }
 
-function startCustomExercise(ex = {chords: ["Em","C","G","D"], pattern: "D DU UDU", bpm: 80}) {
+function startCustomExercise() {
+  const ex = { chords: ["Em", "C", "G", "D"] };
   PracticeSession.currentExercise = ex;
-  PracticeSession.isPlaying = true;
-  console.log("Practice started with", ex.chords);
-  if (ex.chords && ex.chords.length) loadChord(ex.chords[0]);
+  if (typeof loadChord === "function") loadChord("Em");
+  console.log("✅ Start Practice clicked");
 }
 
 function stopPracticeSession() {
-  PracticeSession.isPlaying = false;
-  console.log("Practice stopped");
+  console.log("⛔ Stop clicked");
 }
 
-// Make available globally
+// Global access
 window.playChordAudio = playChordAudio;
 window.startCustomExercise = startCustomExercise;
 window.stopPracticeSession = stopPracticeSession;
