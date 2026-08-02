@@ -1,0 +1,228 @@
+/* =============================================
+   GuitarCP - Main Styles
+   Clean dark theme with guitar-friendly visuals
+   ============================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0f0f0f;
+  color: #e5e5e5;
+  line-height: 1.5;
+}
+
+header {
+  background: #1a1a1a;
+  padding: 20px 24px;
+  border-bottom: 2px solid #333;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffcc33;
+}
+
+/* Main Layout */
+main {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 28px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+section {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Headings */
+h2, h3 {
+  margin-top: 0;
+  color: #ffcc33;
+  border-bottom: 1px solid #333;
+  padding-bottom: 8px;
+}
+
+/* Song Browser */
+.song-search {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+#songBrowserTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+#songBrowserTable th,
+#songBrowserTable td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+#songBrowserTable th {
+  background: #222;
+  color: #ffcc33;
+}
+
+#songBrowserTable tr:hover {
+  background: #252525;
+}
+
+.song-actions button {
+  padding: 6px 12px;
+  margin: 2px;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #333;
+  color: #eee;
+}
+
+.song-actions button:hover {
+  background: #ffcc33;
+  color: #111;
+}
+
+/* Chord Viewer */
+#chordViewerContainer {
+  text-align: center;
+}
+
+#chordViewer {
+  margin: 0 auto;
+  width: 280px;
+  height: 280px;
+}
+
+#chordViewer svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+}
+
+/* Song Title */
+.song-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 16px 0 12px;
+  color: #ffffff;
+  min-height: 2.2em;
+}
+
+/* Buttons */
+button {
+  padding: 10px 18px;
+  margin: 6px 4px;
+  background: #333;
+  color: #eee;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background: #555;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Practice Controls */
+#practiceControls {
+  margin: 16px 0;
+}
+
+#bpmPanel {
+  margin: 16px 0;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+#bpmSlider {
+  width: 85%;
+  margin-top: 8px;
+}
+
+/* Rhythm Grid */
+#rhythmGrid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+  margin: 20px 0;
+}
+
+.rhythm-cell {
+  padding: 12px 4px;
+  text-align: center;
+  background: #222;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: all 0.15s;
+}
+
+.rhythm-cell.beat {
+  background: #2a2a2a;
+  font-weight: bold;
+}
+
+.rhythm-cell.active {
+  background: #ffcc33;
+  color: #111;
+  transform: scale(1.12);
+}
+
+/* Strum Arrows */
+#strum-arrows {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.strum-arrow {
+  opacity: 0.3;
+  transition: all 0.15s;
+}
+
+.strum-arrow.flash {
+  opacity: 1;
+  transform: scale(1.6);
+  color: #ffcc33;
+}
+
+/* Custom Exercise Builder */
+.exercise-builder {
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 24px;
+}
+
+.ex
