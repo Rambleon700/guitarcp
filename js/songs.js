@@ -58,49 +58,64 @@ const SONG_LIBRARY = [
   { title: "No Woman No Cry", artist: "Bob Marley", chords: ["C","G","Am","F"], strumming: "Reggae", bpm: 78 }
 ];
 
-// ------------------------------------------------------------
-// RENDER SONG TABLE
-// ------------------------------------------------------------
+ // Add more songs from your original list if you want
+];
 
 function renderSongList(songs) {
-  const body = document.getElementById("songBrowserBody");
-  if (!body) return;
+  const tbody = document.getElementById("songBrowserBody");
+  if (!tbody) return;
 
-  body.innerHTML = songs
-    .map(song => `
-      <tr>
-        <td>${song.title}</td>
-        <td>${song.artist}</td>
-        <td>${song.chords.join(", ")}</td>
-        <td>${song.strumming}</td>
-        <td>${song.bpm}</td>
-        <td class="song-actions">
-          <button data-title="${song.title}" class="song-practice">Practice</button>
-          <button data-title="${song.title}" class="song-perform">Perform</button>
-        </td>
-      </tr>
-    `)
-    .join("");
+  tbody.innerHTML = songs.map(song => `
+    <tr>
+      <td>${song.title}</td>
+      <td>${song.artist}</td>
+      <td>${song.chords.join(", ")}</td>
+      <td>${song.strumming}</td>
+      <td>${song.bpm}</td>
+      <td class="song-actions">
+        <button class="practice-btn" data-title="${song.title}">Practice</button>
+        <button class="perform-btn" data-title="${song.title}">Perform</button>
+      </td>
+    </tr>
+  `).join("");
 
-  document.querySelectorAll(".song-practice").forEach(btn => {
-    btn.onclick = () => loadSongIntoPractice(btn.dataset.title);
+  // Attach button listeners
+  document.querySelectorAll(".practice-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const title = btn.dataset.title;
+      const song = SONG_LIBRARY.find(s => s.title === title);
+      if (song) loadSongForPractice(song);
+    });
   });
 
-  document.querySelectorAll(".song-perform").forEach(btn => {
-    btn.onclick = () => enterPerformanceMode(btn.dataset.title);
+  document.querySelectorAll(".perform-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const title = btn.dataset.title;
+      alert(`Performance Mode: ${title}\n\n(Feature coming soon)`);
+    });
   });
 }
-
-// ------------------------------------------------------------
-// INIT BROWSER
-// ------------------------------------------------------------
 
 function initSongBrowser() {
   renderSongList(SONG_LIBRARY);
 }
 
-window.addEventListener("load", initSongBrowser);
+// Load song into practice area
+function loadSongForPractice(song) {
+  document.getElementById("currentSongTitle").textContent = song.title;
+  
+  if (song.chords && song.chords.length > 0) {
+    loadChord(song.chords[0]);
+  }
 
-// ------------------------------------------------------------
-// END OF FILE
-// ------------------------------------------------------------
+  // Set BPM
+  const bpm = song.bpm || 80;
+  document.getElementById("bpmDisplay").textContent = bpm;
+  document.getElementById("bpmSlider").value = bpm;
+
+  console.log("Loaded song for practice:", song.title);
+}
+
+// Make functions available globally
+window.initSongBrowser = initSongBrowser;
+window.loadSongForPractice = loadSongForPractice;
