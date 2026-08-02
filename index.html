@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GuitarCP – Song Browser & Practice Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Additional inline improvements - keep minimal */
+    main { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; }
+    .song-search { width: 100%; padding: 8px; margin-bottom: 12px; background: #222; color: #fff; border: 1px solid #444; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GuitarCP – Practice Tool</h1>
+  </header>
+
+  <main>
+    <!-- Song Browser -->
+    <section>
+      <h2>Song Browser</h2>
+      <input type="text" id="songSearch" class="song-search" placeholder="Search songs or artists...">
+      <table id="songBrowserTable">
+        <thead>
+          <tr>
+            <th>Title</th><th>Artist</th><th>Chords</th><th>Strum</th><th>BPM</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="songBrowserBody"></tbody>
+      </table>
+    </section>
+
+    <!-- Chord + Practice -->
+    <section>
+      <h2>Chord Viewer & Practice</h2>
+      <div id="chordViewerContainer" style="text-align:center;">
+        <div id="chordViewer"></div>
+        <div id="currentSongTitle" class="song-title"></div>
+        <div id="viewerButtons">
+          <button id="playChordBtn">Play Chord</button>
+          <button id="nextVoicingBtn">Next Voicing</button>
+        </div>
+        <div id="practiceControls">
+          <button id="practiceStart">Start Practice</button>
+          <button id="practiceStop">Stop</button>
+        </div>
+        <div id="bpmPanel">
+          BPM: <span id="bpmDisplay">80</span>
+          <input type="range" id="bpmSlider" min="40" max="180" value="80">
+        </div>
+        <div id="rhythmGrid"></div>
+        <div id="strum-arrows"></div>
+      </div>
+
+      <!-- Custom Exercise -->
+      <div class="exercise-builder">
+        <h3>Custom Exercise</h3>
+        <!-- (form fields as before, shortened for brevity) -->
+        <button id="startCustom">Start Custom</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/engine.js"></script>
+  <script src="js/chords.js"></script>
+  <script src="js/songs.js"></script>
+  <script src="js/practice.js"></script>
+  <script>
+    // Init
+    window.addEventListener('load', () => {
+      initSongBrowser();
+      // Default load
+      loadChord("C");
+      renderRhythmGrid("D DU UDU");
+      renderStrumArrows();
+    });
+  </script>
+</body>
+</html>
