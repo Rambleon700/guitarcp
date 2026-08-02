@@ -57,36 +57,25 @@
   <script src="js/songs.js"></script>
   <script src="js/practice.js"></script>
 
-
-
   <script>
     window.addEventListener('load', () => {
       if (typeof initSongBrowser === 'function') initSongBrowser();
-      
-      // Default chord
-      if (typeof loadChord === 'function') {
-        loadChord("C");
-      }
+      if (typeof loadChord === 'function') loadChord("C");
 
-      // Button handlers
-      const playBtn = document.getElementById("playChordBtn");
-      if (playBtn) playBtn.onclick = () => {
+      // Button connections
+      document.getElementById("playChordBtn").onclick = () => {
         if (typeof playChordAudio === "function") playChordAudio("Em");
       };
 
-      const startBtn = document.getElementById("practiceStartBtn");
-      if (startBtn) startBtn.onclick = () => {
-        if (typeof startCustomExercise === "function") {
-          startCustomExercise({chords: ["Em","C","G","D"], pattern: "D DU UDU", bpm: 80});
-        }
+      document.getElementById("practiceStartBtn").onclick = () => {
+        if (typeof startCustomExercise === "function") startCustomExercise();
       };
 
-      const stopBtn = document.getElementById("practiceStopBtn");
-      if (stopBtn) stopBtn.onclick = () => {
+      document.getElementById("practiceStopBtn").onclick = () => {
         if (typeof stopPracticeSession === "function") stopPracticeSession();
       };
     });
-  </script
+  </script>
 
 </body>
 </html>
