@@ -1,6 +1,6 @@
 /* =============================================
    GuitarCP – Improved Dark Guitar Theme
-   Clean, professional, and visually appealing
+   Chord box reduced for better screen fit
    ============================================= */
 
 * {
@@ -79,35 +79,20 @@ section {
   background: #272727;
 }
 
-/* Buttons */
-button {
-  padding: 10px 16px;
-  margin: 4px;
-  background: #333;
-  color: #eee;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
+/* ==================== CHORD VIEWER ==================== */
+#chordViewerContainer {
+  text-align: center;
 }
 
-button:hover {
-  background: #ffcc33;
-  color: #111;
-  transform: translateY(-2px);
-}
-
-/* Chord Viewer */
 #chordViewer {
-  margin: 20px auto;
-  width: 300px;
-  height: 300px;
-  background: #f5e8c7;           /* Warm maple fretboard */
-  border-radius: 8px;
-  padding: 12px;
-  box-shadow: inset 0 0 30px rgba(0,0,0,0.6),
-              0 10px 25px rgba(0,0,0,0.5);
+  margin: 16px auto;
+  width: 240px;        /* Reduced size */
+  height: 260px;
+  background: #f5e8c7;   /* Warm maple */
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: inset 0 0 25px rgba(0,0,0,0.6),
+              0 8px 20px rgba(0,0,0,0.5);
 }
 
 #chordViewer svg {
@@ -117,7 +102,7 @@ button:hover {
 
 /* Song Title */
 .song-title {
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   font-weight: 700;
   color: #ffdd88;
   margin: 12px 0 16px;
@@ -128,7 +113,7 @@ button:hover {
 /* BPM & Controls */
 #bpmPanel {
   text-align: center;
-  margin: 20px 0;
+  margin: 18px 0;
   font-size: 1.15rem;
 }
 
@@ -167,9 +152,9 @@ button:hover {
 #strum-arrows {
   display: flex;
   justify-content: center;
-  gap: 18px;
-  font-size: 2.4rem;
-  margin: 16px 0;
+  gap: 16px;
+  font-size: 2.2rem;
+  margin: 14px 0;
 }
 
 .strum-arrow {
@@ -180,7 +165,26 @@ button:hover {
 .strum-arrow.flash {
   opacity: 1;
   color: #ffcc33;
-  transform: scale(1.5);
+  transform: scale(1.45);
+}
+
+/* Buttons */
+button {
+  padding: 10px 16px;
+  margin: 4px;
+  background: #333;
+  color: #eee;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: #ffcc33;
+  color: #111;
+  transform: translateY(-2px);
 }
 
 /* Custom Exercise */
@@ -208,7 +212,7 @@ button:hover {
     grid-template-columns: 1fr;
   }
   #chordViewer {
-    width: 260px;
-    height: 260px;
+    width: 220px;
+    height: 240px;
   }
 }
