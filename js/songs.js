@@ -51,8 +51,8 @@ const SONG_LIBRARY = [
   { title: "Tears in Heaven", artist: "Eric Clapton", chords: ["A","E","F#m","D"], strumming: "Fingerstyle", bpm: 74 },
   { title: "More Than Words", artist: "Extreme", chords: ["G","C","D","Em","Am"], strumming: "Fingerstyle", bpm: 92 },
   { title: "Fast Car", artist: "Tracy Chapman", chords: ["C","G","Em","D"], strumming: "D DU UDU", bpm: 96 },
-  { title: "No Woman No Cry", artist: "Bob Marley", chords: ["C","G","Am","F"], strumming: "Reggae", bpm: 78 }
-];
+   { title: "No Woman No Cry", artist: "Bob Marley", chords: ["C","G","Am","F"], strumming: "Reggae", bpm: 78 }
+]; 
 
 function renderSongList(songs = SONG_LIBRARY) {
   const tbody = document.getElementById("songBrowserBody");
