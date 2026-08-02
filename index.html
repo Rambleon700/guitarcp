@@ -334,6 +334,30 @@
     initSongBrowser();
   }
 </script>
+<script>
+  initSongBrowser();
+</script>
+  <script src="js/engine.js"></script>
+<script src="js/chords.js"></script>
+<script src="js/songs.js"></script>
+<script src="js/practice.js"></script>
 
+<script>
+  // Load songs into the Song Browser
+  initSongBrowser();
+
+  // Viewer buttons
+  document.getElementById("playChordBtn").onclick = () => {
+    if (PracticeSession.currentExercise && PracticeSession.currentExercise.chords.length) {
+      playChordAudio(PracticeSession.currentExercise.chords[0]);
+    }
+  };
+
+  document.getElementById("nextVoicingBtn").onclick = () => {
+    if (typeof nextVoicing === "function") {
+      nextVoicing();
+    }
+  };
+</script>
 </body>
 </html>
