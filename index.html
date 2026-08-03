@@ -85,5 +85,14 @@
     });
   </script>
 
+        // BPM Slider
+      const bpmSlider = document.getElementById("bpmSlider");
+      const bpmDisplay = document.getElementById("bpmDisplay");
+      if (bpmSlider && bpmDisplay) {
+        bpmSlider.addEventListener("input", (e) => {
+          bpmDisplay.textContent = e.target.value;
+        });
+      }
+
 </body>
 </html>
