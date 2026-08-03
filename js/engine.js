@@ -65,27 +65,39 @@ function renderChordDiagram(container, chord) {
 }
 
 // Simple Audio
-const openMidi = [40, 45, 50, 55, 59, 64];
+const openMidi = [40, 45, 50, 55, 59, 64]
 
 function playChord(chord) {
   const ctx = new (window.AudioContext || window.webkitAudioContext)();
+
   chord.frets.forEach((fret, i) => {
     if (fret < 0) return;
+
     const midi = openMidi[i] + fret;
     const freq = 440 * Math.pow(2, (midi - 69) / 12);
 
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
+    const filter = ctx.createBiquadFilter();
+
+    osc.type = 'sawtooth';           // More guitar-like
     osc.frequency.value = freq;
-    osc.connect(gain);
+
+    filter.type = 'lowpass';
+    filter.frequency.value = 800;    // Darker tone
+
+    gain.gain.value = 0.25;
+
+    osc.connect(filter);
+    filter.connect(gain);
     gain.connect(ctx.destination);
 
-    gain.gain.value = 0.3;
     osc.start();
-    osc.stop(ctx.currentTime + 1.2);
+    gain.gain.linearRampToValueAtTime(0.001, ctx.currentTime + 1.8); // Natural decay
+    osc.stop(ctx.currentTime + 2);
   });
 }
-
+o
 // Main load function
 function loadChord(name) {
   ensureChordExists(name);
