@@ -80,20 +80,20 @@ function playChord(chord) {
     const gain = ctx.createGain();
     const filter = ctx.createBiquadFilter();
 
-    osc.type = 'sawtooth';           // More guitar-like
+    osc.type = 'sawtooth';
     osc.frequency.value = freq;
 
     filter.type = 'lowpass';
-    filter.frequency.value = 800;    // Darker tone
+    filter.frequency.value = 1200;
 
-    gain.gain.value = 0.25;
+    gain.gain.setValueAtTime(0.4, ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.001, ctx.currentTime + 1.6);
 
     osc.connect(filter);
     filter.connect(gain);
     gain.connect(ctx.destination);
 
     osc.start();
-    gain.gain.linearRampToValueAtTime(0.001, ctx.currentTime + 1.8); // Natural decay
     osc.stop(ctx.currentTime + 2);
   });
 }
