@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GuitarCP – Practice Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>GuitarCP – Practice Tool</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>Song Browser</h2>
+      <input type="text" id="songSearch" class="song-search" placeholder="Search songs or artists...">
+      <table id="songBrowserTable">
+        <thead>
+          <tr>
+            <th>Title</th><th>Artist</th><th>Chords</th><th>Strum</th><th>BPM</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="songBrowserBody"></tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Chord Viewer & Practice</h2>
+      <div id="chordViewerContainer" style="text-align:center;">
+        <div id="chordViewer"></div>
+        <div id="currentChordName" class="current-chord"></div>
+        <div id="currentSongTitle" class="song-title"></div>
+
+        <div style="margin:20px 0;">
+          <button id="playChordBtn">Play Chord</button>
+          <button id="nextVoicingBtn">Next Voicing</button>
+        </div>
+
+        <div style="margin:16px 0;">
+          <button id="practiceStartBtn">Start Practice</button>
+          <button id="practiceStopBtn">Stop</button>
+        </div>
+
+        <div id="bpmPanel">
+          BPM: <span id="bpmDisplay">80</span>
+          <input type="range" id="bpmSlider" min="40" max="160" value="80" style="width:80%;">
+        </div>
+
+        <div id="rhythmGrid"></div>
+        <div id="strum-arrows"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/chords.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/songs.js"></script>
+  <script src="js/practice.js"></script>
+
+  <script>
+    window.addEventListener('load', () => {
+      if (typeof initSongBrowser === 'function') initSongBrowser();
+      if (typeof loadChord === 'function') loadChord("C");
+
+      // Play Chord
+      document.getElementById("playChordBtn").onclick = () => {
+        if (typeof playChordAudio === "function") playChordAudio("Em");
+        if (typeof renderStrumArrows === "function") renderStrumArrows(["D"]);
+        if (typeof highlightStrumStep === "function") highlightStrumStep(0);
+      };
+
+      // Start Practice
+      document.getElementById("practiceStartBtn").onclick = () => {
+        if (typeof startCustomExercise === "function") startCustomExercise();
+      };
+
+      // Stop
+      document.getElementById("practiceStopBtn").onclick = () => {
+        if (typeof stopPracticeSession === "function") stopPracticeSession();
+      };
+
+      // BPM Slider
+      const bpmSlider = document.getElementById("bpmSlider");
+      const bpmDisplay = document.getElementById("bpmDisplay");
+      if (bpmSlider && bpmDisplay) {
+        bpmSlider.addEventListener("input", (e) => {
+          const bpm = parseInt(e.target.value, 10);
+          bpmDisplay.textContent = bpm;
+          currentBPM = bpm;
+        });
+      }
+    });
+  </script>
+</body>
+</html>
