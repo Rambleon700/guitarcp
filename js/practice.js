@@ -17,8 +17,9 @@ function playChordAudio(chordName = "Em") {
 function startCustomExercise() {
   const ex = { chords: ["Em", "C", "G", "D"] };
   PracticeSession.currentExercise = ex;
+  console.log("▶️ Practice Started - Cycle through Em, C, G, D");
+  // Just show first chord for now
   if (typeof loadChord === "function") loadChord("Em");
-  console.log("▶️ Practice Started");
 }
 
 function stopPracticeSession() {
